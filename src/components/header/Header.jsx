@@ -9,7 +9,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { format } from 'date-fns';
 
-export default function Header() {
+export default function Header({type}) {
     const [openDate, setopenDate] = useState(false)
     const [date, setDate] = useState([
         {
@@ -32,9 +32,10 @@ export default function Header() {
     };
   return (
     <div className="header">
-        <div className="headercontainer">
+        <div className={type === "list" ? "headercontainer listmode" : "headercontainer"}>
 
-        <div className="headerlist">
+
+       <div className="headerlist">
             <div className="headerlistitem">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
@@ -60,6 +61,7 @@ export default function Header() {
             <span>Airport Taxis</span>
             </div>
         </div>
+        { type !== "list" && <> 
         <h1 className="headertitle">A lifetime of discounts? It's Genius.</h1>
         <p className="headerdesc">Get rewarded for your travels - unlock instant savings of 10% or more with a free Wanderlust Retreat account</p>
         <button className='headerbtn'>Sign in / Register</button>
@@ -88,7 +90,7 @@ export default function Header() {
                 <div className="optionitem">
                     <span className="optiontext">Adult</span>
                     <div className="optioncounter">
-                    <button className="optioncounterbutton"  onClick={()=> handleOption("adult", "d")}>-</button>
+                    <button disabled={options.adult<=1} className="optioncounterbutton"  onClick={()=> handleOption("adult", "d")}>-</button>
                     <span className="optioncounternumber">{options.adult}</span>
                     <button className="optioncounterbutton" onClick={()=> handleOption("adult", "i")}>+</button>
                     </div>
@@ -98,7 +100,7 @@ export default function Header() {
                     <span className="optiontext">Children</span>
                     <div className="optioncounter">
 
-                    <button className="optioncounterbutton"  onClick={()=> handleOption("children", "d")}>-</button>
+                    <button disabled={options.children<=0} className="optioncounterbutton"  onClick={()=> handleOption("children", "d")}>-</button>
                     <span className="optioncounternumber">{options.children}</span>
                     <button className="optioncounterbutton"  onClick={()=> handleOption("children", "i")}>+</button>
                     </div>
@@ -108,7 +110,7 @@ export default function Header() {
                     <span className="optiontext">Room</span>
                     <div className="optioncounter">
 
-                    <button className="optioncounterbutton" onClick={()=> handleOption("room", "d")}>-</button>
+                    <button disabled={options.room<=1} className="optioncounterbutton" onClick={()=> handleOption("room", "d")}>-</button>
                     <span className="optioncounternumber">{options.room}</span>
                     <button className="optioncounterbutton" onClick={()=> handleOption("room", "i")}>+</button>
                     </div>
@@ -122,7 +124,7 @@ export default function Header() {
             </div>
 
 
-        </div>
+        </div></>}
         </div>
     </div>
   )
