@@ -1,0 +1,26 @@
+.fp{
+    width: 100%;
+    max-width: 1024px;
+    display:flex;
+    justify-self: space-between;
+    gap: 20px;
+}
+
+.fpitem{
+    flex: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fpimgage{
+    width: 300px;
+}
+
+.fpname{
+    font-weight: bold;
+}
+
+.fpcity{
+    font-weight: 300;
+}

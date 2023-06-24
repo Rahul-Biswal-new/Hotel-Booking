@@ -36,7 +36,7 @@ export default function Header({type}) {
 
 
        <div className="headerlist">
-            <div className="headerlistitem">
+            <div className="headerlistitem active">
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
             </div>
