@@ -8,8 +8,10 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header({type}) {
+    const [destinaton, setdestinaton] = useState("");
     const [openDate, setopenDate] = useState(false)
     const [date, setDate] = useState([
         {
@@ -30,6 +32,11 @@ export default function Header({type}) {
             ...prev, [name]: operation === "i" ? options[name] +1 : options[name] -1, 
         }});
     };
+
+    const navigate = useNavigate();
+    const handleSearch = () =>{
+        navigate('/hotels', {state:{}});
+    }
   return (
     <div className="header">
         <div className={type === "list" ? "headercontainer listmode" : "headercontainer"}>
@@ -120,7 +127,7 @@ export default function Header({type}) {
 
             
             <div className="headersearchitem">
-            <button className="headerbtn">Search</button>
+            <button className="headerbtn" onClick={handleSearch}>Search</button>
             </div>
 
 
